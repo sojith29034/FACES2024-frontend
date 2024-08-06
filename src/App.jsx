@@ -1,19 +1,37 @@
-import { useState } from 'react'
 import './App.css'
-import Card from './components/card/card'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import LandingPage from './pages/landingPage/LandingPage';
+import AboutFaces from './pages/aboutFaces/AboutFaces';
+import EventCards from './pages/eventCards/EventCards';
+import IndividualCard from './pages/individualCard/IndividualCard';
+import Profile from './pages/profile/Profile';
 
 function App() {
   // const [count, setCount] = useState(0)
 
-  return (
+  // eslint-disable-next-line react/prop-types
+  const Mainframe = ({element}) => {
+    return (
     <>
-    <h1>College Fest</h1>
-    <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-    <Card />
-    <Card />
-    <Card />
-    </div>
+      <Navbar/>
+      {element}
+      <Footer/>
     </>
+    );
+  }
+
+  return (
+    <Router>
+      <Routes>
+        <Route path='/' element={<Mainframe element={<LandingPage/>} />}/>
+        <Route path='/aboutFaces' element={<Mainframe element={<AboutFaces/>} />}/>
+        <Route path='/eventCards' element={<Mainframe element={<EventCards/>} />}/>
+        <Route path='/individualCard' element={<Mainframe element={<IndividualCard/>} />}/>
+        <Route path='/profile' element={<Mainframe element={<Profile/>} />}/>
+      </Routes>
+    </Router>
   )
 }
 
