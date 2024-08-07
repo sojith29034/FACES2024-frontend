@@ -1,0 +1,117 @@
+/* Base styles */
+.event-cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding and border are included in the total width and height */
+  }
+  
+  /* Ensure it is centered and responsive on larger screens */
+  @media (min-width: 768px) {
+    .event-cards-container {
+      max-width: 1200px; /* Adjust max-width as needed */
+    }
+  }
+  
+  /* Adjust styles for mobile screens */
+  @media (max-width: 767px) {
+    .event-cards-container {
+      padding: 10px;
+    }
+  
+    .event-card {
+      width: 100%; /* Make sure cards fit the screen width */
+      max-width: 100%; /* Ensure it doesn’t exceed screen width */
+    }
+  }
+  
+  /* Center the cards wrapper */
+  .event-cards-wrapper {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically if needed */
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding and border are included in the total width and height */
+    min-height: 300px; /* Adjust based on the height you want */
+  }
+  
+  .event-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    transition: transform 0.6s;
+  }
+  
+  .event-cards.flip {
+    transform: rotateY(180deg);
+  }
+  
+  .event-cards.slide-left {
+    transform: translateX(-100%);
+  }
+  
+  .event-cards.slide-right {
+    transform: translateX(100%);
+  }
+  
+  /* Event card styles */
+  .event-card {
+    background: white;
+    width: 90%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box; /* Ensures padding and border are included in the total width and height */
+  }
+  
+  .event-card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .event-card-details {
+    flex: 1;
+  }
+  
+  .event-card-details h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .event-card-details p {
+    margin: 5px 0;
+    font-size: 0.9em;
+  }
+  
+  .event-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .event-card-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .event-card-image img {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
