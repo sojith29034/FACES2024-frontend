@@ -1,10 +1,32 @@
+import React from 'react';
+import Poster from '../../assets/Poster.jpg';
+import '../landingPage/LandingPage.css'
+import HighLights from './HighLights';
 
 const LandingPage = () => {
-  return (
-    <div>
-      LandingPage
-    </div>
-  )
-}
+  return (<div>
+    <div className="fullscreen-image">
+    <img src={Poster} alt="Poster" />
+  </div>
 
-export default LandingPage
+  <div>
+    SPONSORS
+  </div>
+  <h3>HIGHLIGHTS</h3>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '35px' }}>
+  <div style={{ display: 'flex', flexDirection: 'row', gap: '35px' }}>
+    <HighLights />
+    <HighLights />
+  </div>
+
+  <div style={{ display: 'flex', flexDirection: 'row', gap: '35px' }}>
+    <HighLights />
+    <HighLights />
+  </div>
+</div>
+
+  </div>
+  );
+};
+
+export default LandingPage;
