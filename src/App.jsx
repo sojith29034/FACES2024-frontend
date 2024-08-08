@@ -8,6 +8,7 @@ import EventCards from './pages/eventCards/EventCards';
 import IndividualCard from './pages/individualCard/IndividualCard';
 import Profile from './pages/profile/Profile';
 
+
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -15,6 +16,7 @@ function App() {
   const Mainframe = ({element}) => {
     return (
     <>
+      
       <Navbar/>
       {element}
       <Footer/>
