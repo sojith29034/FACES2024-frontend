@@ -30,7 +30,7 @@ function App() {
         <Route path='/' element={<Mainframe element={<LandingPage/>} />}/>
         <Route path='/aboutFaces' element={<Mainframe element={<AboutFaces/>} />}/>
         <Route path='/eventCards' element={<Mainframe element={<EventCards/>} />}/>
-        <Route path='/individualCard' element={<Mainframe element={<IndividualCard/>} />}/>
+        <Route path='/individualCard' element={<Mainframe element={<IndividualCard />} />} />
         <Route path='/profile' element={<Mainframe element={<Profile/>} />}/>
       </Routes>
     </Router>

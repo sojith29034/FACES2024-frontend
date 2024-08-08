@@ -1,0 +1,145 @@
+/* General styles for the event card */
+.event-card {
+    background-color: #062030;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    position: relative; /* Added for absolute positioning of image container */
+}
+
+/* Image container styles */
+.event-image {
+    margin-top: 20px;
+    position: relative;
+    display: inline-block;
+    background-color: #86c8c4; /* Background color to match the image's border */
+    border-radius: 15px; /* Adjust the radius to match the image corners */
+    width: 70%;
+    padding-top: 80%; /* This maintains a square aspect ratio */
+    overflow: hidden; /* Ensures the image stays within the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Image styles */
+.event-image img {
+    position: absolute;
+    width: 88%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%; /* Makes the image 90% of the event-image box */
+    max-height: 88%; /* Prevents overflow */
+    border-radius: 15px; /* Adjusted to match the image corners */
+}
+
+/* Event title styles */
+h2 {
+    margin: 20px 0 10px;
+    font-size: 22px;
+}
+
+/* Styling the event details section */
+.event-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content horizontally */
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 10px 0;
+    font-weight: bold;
+    padding: 10px; /* Adds spacing around the content */
+    text-align: center; /* Centers the text within each line */
+}
+
+/* Description styles */
+.event-description {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 5%;
+    text-align: justify;
+}
+
+/* Seats information styles */
+.seats-info {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Input section styles */
+.roll-number-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+/* Input field styles */
+.roll-number-input input {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    background-color: #86c8c4;
+    color: #062030;
+    text-align: center;
+    outline: none;
+}
+
+/* Button styles */
+.roll-number-input button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #86c8c4;
+    color: #062030;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    outline: none;
+}
+
+/* Roll number container styles */
+.roll-number-list-container {
+    background-color: #86c8c4;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Roll number list styles */
+.roll-number-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Individual roll number box styles */
+.roll-number {
+    position: relative;
+    background-color: #BDE1DF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #062030;
+    border: 2px solid #062030; /* Border around each roll number box */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow for depth */
+}
+
+/* Join button styles */
+.join-button {
+    width: 80px;
+    background-color: #287271;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #062030;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 20px;
+}
