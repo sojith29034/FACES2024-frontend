@@ -601,6 +601,14 @@ video {
   margin-top: 0.5rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .block {
   display: block;
 }
@@ -625,8 +633,16 @@ video {
   width: 100%;
 }
 
+.max-w-96 {
+  max-width: 24rem;
+}
+
 .items-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-between {
@@ -637,6 +653,12 @@ video {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .rounded {
@@ -685,6 +707,28 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -710,6 +754,16 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .font-bold {
@@ -769,6 +823,11 @@ h1 {
 .hover\:bg-\[\#0E535F\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(14 83 95 / var(--tw-bg-opacity));
+}
+
+.hover\:text-gray-300:hover {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 .focus\:outline-none:focus {
