@@ -2,6 +2,7 @@ import React from 'react';
 import Poster from '../../assets/Poster.jpg';
 import '../landingPage/LandingPage.css'
 import HighLights from './HighLights';
+import Sponsors from '../../components/Sponsors';
 
 const LandingPage = () => {
   return (<div>
@@ -10,7 +11,7 @@ const LandingPage = () => {
   </div>
 
   <div>
-    SPONSORS
+    <Sponsors/>
   </div>
   <h3>HIGHLIGHTS</h3>
   <div style={{ display: 'flex', flexDirection: 'column', gap: '35px' }}>
