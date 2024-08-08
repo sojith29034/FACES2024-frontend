@@ -2,6 +2,7 @@ import React from 'react';
 import Poster from '../../assets/Poster.jpg';
 import '../landingPage/LandingPage.css'
 import HighLights from './HighLights';
+import Sponsors from '../../components/Sponsors';
 
 const LandingPage = () => {
   return (<div>
