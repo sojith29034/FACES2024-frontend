@@ -1,13 +1,11 @@
 import React from "react";
 import myImage from "./images/firstimage.png"; // Importing the image
-
 // import './App.css';
 
 function App() {
   return (
     <div className="body">
-      <div className="navbar">UMANG</div>
-      {/* since navbar & footer are already made i have just created a dummy div for it */}
+     <Navbar />
       <div className="blob1"></div>
       <img className="umang" src={myImage} alt="My Local Image" />
       <div className="about-umang">
@@ -39,13 +37,7 @@ function App() {
         </p>
       </div>
       <div className="blob2"></div>
-      <div className="footer">
-        <h2>Fr. C. Rodrigues Institute of Technology</h2>
-        <h6>
-          Agnel Technical Education Complex, Sector 9-A, Vashi, Navi Mumbai,
-          Maharashtra, India, Pin - 400703
-        </h6>
-      </div>
+     <Footer />
     </div>
   );
 }
