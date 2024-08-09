@@ -1,8 +1,8 @@
 import React from "react";
 import myImage from "./images/firstimage.png"; // Importing the image
-// import './App.css';
+import './AboutFaces.css';
 
-function App() {
+function AboutFaces() {
   return (
     <div className="body">
      <Navbar />
@@ -42,4 +42,4 @@ function App() {
   );
 }
 
-export default App;
+export default AboutFaces;
