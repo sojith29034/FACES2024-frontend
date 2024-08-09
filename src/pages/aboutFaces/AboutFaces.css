@@ -1,97 +1,7 @@
-@media screen and (max-width: 768px) {
-  body {
-    background-color: #06252a;
-    align-content: start;
 
-  }
-
-  .blob1 {
-    width: 369.47px;
-    height: 364px;
-    right: 0;
-    top: 0;
-    float: right;
-    background: url(./images/blob1.png);
-    mix-blend-mode: overlay;
-  }
-  .umang {
-    top: 100px;
-    height: 357px;
-    position: absolute;
-    display: flex;
-    padding: 0 30px;
-    width: -webkit-fill-available;
-  }
-  .blob2 {
-    width: -webkit-fill-available;
-    height: 364px;
-    left: 0;
-    top: 0;
-    float: left;
-    background-repeat: no-repeat;
-    background: url(./images/blob2.png);
-    mix-blend-mode: overlay;
-    background-repeat: no-repeat;
-  }
-  .about-umang {
-    top: 470px;
-    position: absolute;
-    color: white;
-    text-align: justify;
-    padding: 0 30px;
-    text-align-last: center;
-  }
-  .frame {
-    height: 47px;
-    background-color: #86c8c4;
-    position: absolute;
-    width: 100%;
-    top: 792px;
-  }
-  .faces {
-    top: 910px;
-    height: 357px;
-    position: absolute;
-    display: flex;
-    padding: 0 30px;
-    width: -webkit-fill-available;
-  }
-  .about-faces {
-    top: 1280px;
-    position: absolute;
-    color: white;
-    text-align: justify;
-    padding: 0 30px;
-    text-align-last: center;
-  }
-
-  .footer {
-    height: auto;
-    background-color: #0e535f;
-    color: white;
-    font-family: Inter;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 0 20px;
-  }
-}
-body {
+.body {
   background-color: #06252a;
-  align-content: star;
-
-}
-.navbar {
-  height: 43px;
-  width: 100%;
-  background-color: #0e535f;
-  color: white;
-  font-family: Inter;
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
+  align-content: start;
 }
 
 .blob1 {
@@ -123,7 +33,7 @@ body {
   background-repeat: no-repeat;
 }
 .about-umang {
-  top: 470px;
+  top: 485px;
   position: absolute;
   color: white;
   text-align: justify;
@@ -146,7 +56,7 @@ body {
   width: -webkit-fill-available;
 }
 .about-faces {
-  top: 1280px;
+  top: 1295px;
   position: absolute;
   color: white;
   text-align: justify;
@@ -154,15 +64,3 @@ body {
   text-align-last: center;
 }
 
-.footer {
-  height: auto;
-  background-color: #0e535f;
-  color: white;
-  font-family: Inter;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 0 20px;
-}
