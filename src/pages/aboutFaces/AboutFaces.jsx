@@ -1,11 +1,13 @@
-import React from "react";
-import myImage from "./images/firstimage.png"; // Importing the image
-import './AboutFaces.css';
+import React from 'react';
+import './AboutFaces.css'; 
+import myImage from './images/firstimage.png'; 
+import Navbar from './Navbar';
+import Footer from './Footer'; 
 
-function AboutFaces() {
+const AboutFaces = () => {
   return (
     <div className="body">
-     <Navbar />
+      <Navbar />
       <div className="blob1"></div>
       <img className="umang" src={myImage} alt="My Local Image" />
       <div className="about-umang">
@@ -37,9 +39,9 @@ function AboutFaces() {
         </p>
       </div>
       <div className="blob2"></div>
-     <Footer />
+      <Footer />
     </div>
   );
-}
+};
 
 export default AboutFaces;
