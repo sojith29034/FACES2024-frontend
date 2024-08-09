@@ -1,13 +1,11 @@
 import React from 'react';
 import './AboutFaces.css'; 
 import myImage from './images/firstimage.png'; 
-import Navbar from './Navbar';
-import Footer from './Footer'; 
+
 
 const AboutFaces = () => {
   return (
     <div className="body">
-      <Navbar />
       <div className="blob1"></div>
       <img className="umang" src={myImage} alt="My Local Image" />
       <div className="about-umang">
@@ -39,7 +37,6 @@ const AboutFaces = () => {
         </p>
       </div>
       <div className="blob2"></div>
-      <Footer />
     </div>
   );
 };
