@@ -30,14 +30,16 @@ const IndividualCard = () => {
         </div>
       </div>
       <div className="right-section">
-        <h2>FOOTBALL (MENS)</h2>
+        <div className="title">
+          <span className="big-bold-text">FOOTBALL (MENS)</span>
+        </div>
         <div className="event-details">
           <p>Day<br />Time<br />Venue<br />Price</p>
         </div>
         <p className="event-description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultricies libero ex, non porttitor est auctor vitae. Proin vestibulum malesuada urna ut euismod. Donec eget ullamcorper sapien, id posuere neque. Ut leo augue, semper sit amet gravida ac, hendrerit facilisis mauris. Sed tincidunt sed lectus sed rutrum.
         </p>
-        <div className="seats-info">Seats: {seats - rollNumbers.length}/{seats}</div>
+        <div className="seats-info"><b>Seats: {seats - rollNumbers.length}/{seats}</b></div>
         <div className="roll-number-input">
           <input
             type="text"
