@@ -1,0 +1,220 @@
+/* General styles for the event card */
+.event-card {
+    width: auto;
+    background-color: #062030;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Initially column layout for mobile */
+    gap: 20px; /* Spacing between elements */
+}
+
+/* Image and input container */
+.left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Text content container */
+.right-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Image container styles */
+.event-image {
+    background-color: #86c8c4; /* Background color surrounding the image */
+    border-radius: 15px;
+    width: 100%;
+    padding-top: 100%; /* Square aspect ratio */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Image styles */
+.event-image img {
+    margin-top: -94%;
+    margin-bottom: 4%;
+    max-width: 88%; /* Adjust max width to fit the image inside the container with padding */
+    max-height: 80%; /* Adjust max height to maintain the aspect ratio */
+    object-fit: contain; /* Ensure the image is fully contained within the box */
+    border-radius: 15px; /* Match the container's rounded corners */
+}
+
+/* Event title styles */
+h2 {
+    padding-top: 5%;
+    margin: 20px 10px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Styling the event details section */
+.event-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 10px 0;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Description styles */
+.event-description {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 5%;
+    text-align: justify;
+}
+
+/* Seats information styles */
+.seats-info {
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Input section styles */
+.roll-number-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+/* Input field styles */
+.roll-number-input input {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    background-color: #86c8c4;
+    color: #062030;
+    text-align: center;
+    outline: none;
+}
+
+/* Button styles */
+.roll-number-input button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #86c8c4;
+    color: #062030;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    outline: none;
+}
+
+/* Roll number container styles */
+.roll-number-list-container {
+    background-color: #86c8c4;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Roll number list styles */
+.roll-number-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Individual roll number box styles */
+.roll-number {
+    background-color: #BDE1DF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #062030;
+    border: 2px solid #062030;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Join button styles */
+.join-button {
+    align-self: center;
+    width: 80px;
+    background-color: #287271;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #062030;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+/* Responsive styles for larger screens */
+@media screen and (min-width: 768px) {
+    .event-card {
+        flex-direction: row; /* Switch to row layout for desktop */
+    }
+
+    .left-section {
+        width: 40%; /* Left section takes up 40% of the width */
+    }
+
+    .right-section {
+        width: 60%; /* Right section takes up 60% of the width */
+        padding-left: 20px; /* Add some padding for spacing */
+    }
+
+    .event-image {
+        width: 100%;
+        padding-top: 100%; /* Maintain square aspect ratio */
+    }
+
+    h2 {
+        font-size: 24px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .event-details {
+        font-size: 20px;
+        /* align-items: flex-start; */
+        text-align: center;
+        justify-content: center;
+    }
+
+    .event-description {
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .seats-info {
+        font-size: 20px;
+    }
+
+    .roll-number-input input, .roll-number-input button {
+        padding: 15px 30px;
+        font-size: 18px;
+    }
+
+    .join-button {
+        width: 100px;
+        padding: 15px 30px;
+        font-size: 18px;
+    }
+}
