@@ -8,6 +8,7 @@ import EventCards from './pages/eventCards/EventCards';
 import IndividualCard from './pages/individualCard/IndividualCard';
 import Profile from './pages/profile/Profile';
 
+
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -15,6 +16,7 @@ function App() {
   const Mainframe = ({element}) => {
     return (
     <>
+      
       <Navbar/>
       {element}
       <Footer/>
@@ -28,7 +30,7 @@ function App() {
         <Route path='/' element={<Mainframe element={<LandingPage/>} />}/>
         <Route path='/aboutFaces' element={<Mainframe element={<AboutFaces/>} />}/>
         <Route path='/eventCards' element={<Mainframe element={<EventCards/>} />}/>
-        <Route path='/individualCard' element={<Mainframe element={<IndividualCard/>} />}/>
+        <Route path='/individualCard' element={<Mainframe element={<IndividualCard />} />} />
         <Route path='/profile' element={<Mainframe element={<Profile/>} />}/>
       </Routes>
     </Router>
