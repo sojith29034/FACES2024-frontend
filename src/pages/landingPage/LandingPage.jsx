@@ -5,20 +5,21 @@ import HighLights from './HighLights';
 import Sponsors from '../../components/Sponsors';
 
 const LandingPage = () => {
-  return (<div>
+  return (
+  <div>
     <div className="fullscreen-image">
       <img src={Poster} alt="Poster" />
-      </div>
+    </div>
 
     <div>
-      SPONSORS
-    </div>
-     <HighLights />
+      <Sponsors />
     </div>
 
-    
+    <div>
+      <HighLights />
+    </div>
+  </div>
 
-  
   );
 };
 
