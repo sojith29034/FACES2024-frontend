@@ -37,9 +37,9 @@ const HighLights = () => {
       <h2>HIGHLIGHTS</h2>
       {events.map((eventCategory, index) => (
         <div key={index}>
-          <h2>{eventCategory.category}</h2>
+          <h2>{eventCategory.category === 'sports' ? "SPORTS" : "CULTURAL"}</h2>
           <div
-            className="card-container"
+            className="card-container animate-marquee"
             ref={eventCategory.category === 'sports' ? sportsContainerRef : culturalContainerRef}
           >
             {eventCategory.items.map((item, idx) => (
