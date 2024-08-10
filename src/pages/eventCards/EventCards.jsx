@@ -11,29 +11,40 @@ const eventsData = {
       { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
       { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
       { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
-      // Add more sports events for day 1
+      { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
+      { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
+      
     ],
     cultural: [
       { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
       { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
       { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
       { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
-      // Add more cultural events for day 1
+      { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
+      { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
+      { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
+   
     ],
   },
   day2: {
     sports: [
       { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
-      { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
-      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png'},
-      { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
-      // Add more sports events for day 2
+      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
+      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
+      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
+      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
+      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
+      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
+
     ],
     cultural: [
       { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
       { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
       { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
-      // Add more cultural events for day 2
+      { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
+      { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
+      { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
+
     ],
   },
   day3: {
@@ -42,14 +53,21 @@ const eventsData = {
       { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
       { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
       { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
-      // Add more sports events for day 3
+      { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
+      { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
+      { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
+  
     ],
     cultural: [
       { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
       { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
       { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
       { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
-      // Add more cultural events for day 3
+      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
+      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
+      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
+      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
+
     ],
   },
 };
@@ -62,22 +80,22 @@ const EventCards = () => {
 
   const handleDayChange = (day) => {
     if (day !== currentDay) {
-      setFlip(true);
+      const direction = day > currentDay ? 'slide-right' : 'slide-left';
+      setSlide(direction);
       setTimeout(() => {
         setCurrentDay(day);
-        setFlip(false);
-      }, 600); // Duration of the flip animation
+        setSlide('');
+      }, 600); 
     }
   };
 
   const handleCategoryChange = (category) => {
     if (category !== currentCategory) {
-      const direction = category === 'sports' ? 'slide-right' : 'slide-left';
-      setSlide(direction);
+      setFlip(true);
       setTimeout(() => {
         setCurrentCategory(category);
-        setSlide('');
-      }, 600); // Duration of the slide animation
+        setFlip(false);
+      }, 500); 
     }
   };
 
@@ -92,7 +110,7 @@ const EventCards = () => {
         <button onClick={() => handleCategoryChange('sports')} className={currentCategory === 'sports' ? 'active' : ''}>Sports</button>
         <button onClick={() => handleCategoryChange('cultural')} className={currentCategory === 'cultural' ? 'active' : ''}>Cultural</button>
       </div>
-      <div className={`event-cards-wrapper ${currentCategory === 'sports' ? '' : 'hidden'}`}>
+      <div className={`event-cards-wrapper`}>
         <div className={`event-cards ${flip ? 'flip' : slide}`}>
           {eventsData[currentDay][currentCategory].map((event, index) => (
             <div className="event-card" key={index}>
