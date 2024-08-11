@@ -11,6 +11,13 @@ const Navbar = () => {
   return (
     <nav className="bg-[#0E535F]">
       <div className="container mx-auto flex justify-between items-center p-4">
+        
+
+        {/* Logo */}
+        <div className="text-white text-lg font-inter font-normal">
+          UMANG {/* Replace "MyLogo" with your actual logo */}
+        </div>
+
         {/* Hamburger Menu Button (Hidden on Desktop) */}
         <div className="text-black text-xl font-bold align-middle md:hidden">
           <button onClick={toggleMenu} className="focus:outline-none">
@@ -29,11 +36,6 @@ const Navbar = () => {
               ></path>
             </svg>
           </button>
-        </div>
-
-        {/* Logo */}
-        <div className="text-white text-lg font-inter font-normal">
-          UMANG {/* Replace "MyLogo" with your actual logo */}
         </div>
 
         {/* Navbar Links (Visible on Desktop) */}
