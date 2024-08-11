@@ -115,12 +115,9 @@ body {
 
   .umang-section {
     display: flex;
-    /* justify-content: center; */
     place-content: space-around;
     padding-top: 100px;
-    /* padding: 100px 25px; */
     width: 100%;
-    /* gap: 80px; */
     padding-bottom: 60px;
   }
   .umang {
@@ -140,12 +137,8 @@ body {
   }
   .faces-section {
     display: flex;
-    /* justify-content: center; */
     place-content: space-around;
-    padding-top: 100px;
-    /* padding: 100px 25px; */
     width: 100%;
-    /* gap: 80px; */
     padding-bottom: 60px;
     padding-top: 130px;
   }
