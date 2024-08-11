@@ -33,13 +33,15 @@ const HighLights = () => {
   };
 
   return (
+    <>    
     <div className="landing-page">
+    <div className="blob1"></div>
       <h2>HIGHLIGHTS</h2>
       {events.map((eventCategory, index) => (
         <div key={index}>
           <h2>{eventCategory.category === 'sports' ? "SPORTS" : "CULTURAL"}</h2>
           <div
-            className="card-container animate-marquee"
+            className="card-container flex animate-marquee"
             ref={eventCategory.category === 'sports' ? sportsContainerRef : culturalContainerRef}
           >
             {eventCategory.items.map((item, idx) => (
@@ -62,7 +64,9 @@ const HighLights = () => {
           </div>
         </div>
       ))}
+    <div className="blob2"></div>
     </div>
+    </>
   );
 };
 

@@ -1,13 +1,12 @@
-import React from 'react';
-import './AboutFaces.css'; 
-import myImage from './images/firstimage.png'; 
+import './AboutFaces.css';
+import Umang from '../../assets/umang.png';
 
 
 const AboutFaces = () => {
   return (
     <div className="body">
       <div className="blob1"></div>
-      <img className="umang" src={myImage} alt="My Local Image" />
+      <img className="umang" src={Umang} alt="My Local Image" />
       <div className="about-umang">
         <h2>About Umang</h2>
         <p>
@@ -25,7 +24,7 @@ const AboutFaces = () => {
         <p>dummy2</p>
       </div>
       <div className="blob1"></div>
-      <img className="faces" src={myImage} alt="My Local Image" />
+      {/* <img className="faces" src={myImage} alt="My Local Image" /> */}
       <div className="about-faces">
         <h2>About Faces</h2>
         <p>
