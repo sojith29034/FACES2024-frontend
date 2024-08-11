@@ -20,7 +20,6 @@
 
 body {
   margin: 0;
-  
   /* min-width: 320px;
   min-height: 100vh; */
 }
@@ -43,4 +42,28 @@ h1 {
   display: flex;
   width: 100%;
   animation: marquee 15s linear infinite;
+}
+
+
+.blob1 {
+  width: 369.47px;
+  height: 364px;
+  right: 0;
+  top: 0;
+  float: right;
+  background: url(./assets/blob1.png);
+  mix-blend-mode: overlay;
+  position: absolute;
+}
+.blob2 {
+  width: -webkit-fill-available;
+  height: 364px;
+  left: 0;
+  bottom: 0;
+  float: left;
+  background-repeat: no-repeat;
+  background: url(./assets/blob2.png);
+  mix-blend-mode: overlay;
+  position: absolute;
+  background-repeat: no-repeat;
 }

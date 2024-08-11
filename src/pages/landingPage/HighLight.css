@@ -1,3 +1,6 @@
+.landing-page{
+  position: relative;
+}
 h2 {
   font-size: 24px;
   margin: 20px 0;
@@ -8,12 +11,10 @@ h2 {
 .card-container {
   display: flex;
   left: 0;
-  overflow-x: auto; /* Enable horizontal scrolling */
   white-space: nowrap; /* Prevent wrapping to the next line */
   scrollbar-width: none; /* Hide scrollbar on Firefox */
   -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
   padding: 10px 0;
-  position: relative;
 }
 
 .card-container::-webkit-scrollbar {
@@ -24,7 +25,7 @@ h2 {
   background: linear-gradient(rgba(13, 145, 137, 0.5), rgba(13, 145, 137, 0.5)), url('../../assets/football.jpg');
   border-radius: 10px;
   margin: 0 10px; /* Horizontal margin to space out the cards */
-  padding: 20px;
+  padding: 20px 10px;
   width: 200px; /* Minimum width for each card */
   flex-shrink: 0; /* Prevent cards from shrinking */
   background-size: cover;
@@ -57,13 +58,3 @@ h2 {
   font-size: 14px;
   color: #004d40;
 }
-
-@keyframes marquee {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-

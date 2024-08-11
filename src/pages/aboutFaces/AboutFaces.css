@@ -4,15 +4,6 @@
   align-content: start;
 }
 
-.blob1 {
-  width: 369.47px;
-  height: 364px;
-  right: 0;
-  top: 0;
-  float: right;
-  background: url(./images/blob1.png);
-  mix-blend-mode: overlay;
-}
 .umang {
   top: 100px;
   height: 357px;
@@ -20,17 +11,6 @@
   display: flex;
   padding: 0 30px;
   width: -webkit-fill-available;
-}
-.blob2 {
-  width: -webkit-fill-available;
-  height: 364px;
-  left: 0;
-  top: 0;
-  float: left;
-  background-repeat: no-repeat;
-  background: url(./images/blob2.png);
-  mix-blend-mode: overlay;
-  background-repeat: no-repeat;
 }
 .about-umang {
   top: 485px;

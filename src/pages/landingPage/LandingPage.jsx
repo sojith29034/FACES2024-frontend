@@ -6,7 +6,7 @@ import Sponsors from '../../components/Sponsors';
 
 const LandingPage = () => {
   return (
-  <div>
+  <div className='bg-[#032A33]'>
     <div className="fullscreen-image">
       <img src={Poster} alt="Poster" />
     </div>
