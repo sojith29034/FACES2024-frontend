@@ -650,6 +650,14 @@ video {
   flex-shrink: 0;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
 .items-center {
   align-items: center;
 }
@@ -803,20 +811,30 @@ h1 {
   line-height: 1.1;
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(100%);
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100vw);
   }
 
-  to {
-    transform: translateX(-100%);
+  100% {
+    transform: translateX(-100vw);
   }
 }
 
-.animate-marquee {
+/* Container for the scrolling effect */
+
+.scroll-container {
   display: flex;
+  overflow: hidden;
+  position: relative;
   width: 100%;
-  animation: marquee 15s linear infinite;
+}
+
+/* Individual image styling with animation */
+
+.sponsor-image {
+  display: inline-block;
+  animation: scroll-left 10s linear infinite;
 }
 
 .blob1 {

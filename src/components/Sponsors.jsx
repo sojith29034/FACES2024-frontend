@@ -1,5 +1,3 @@
-
-
 const Sponsors = () => {
   const sponsors = [
     '/path/to/sponsor1.png',
@@ -11,11 +9,18 @@ const Sponsors = () => {
 
   return (
     <div className="bg-[#0E535F] py-4">
-      <div className="overflow-hidden">
-        <div className="flex animate-marquee">
+      <div className="scroll-container">
+        <div className="flex">
           {sponsors.map((sponsor, index) => (
             <div key={index} className="flex-shrink-0 mx-4">
-              <img src={sponsor} alt={`Sponsor ${index + 1}`} className="h-8 md:h-24" />
+              <img
+                src={sponsor}
+                alt={`Sponsor ${index + 1}`}
+                className="sponsor-image h-8 md:h-24"
+                style={{
+                  animationDelay: `${index * 2}s`, // Stagger animation by 2s for each image
+                }}
+              />
             </div>
           ))}
         </div>
