@@ -4,10 +4,11 @@ import Umang from '../../assets/umang.png';
 
 const AboutFaces = () => {
   return (
-    <div className="body">
+    <div className="body bg-[#032A33]">
       <div className="blob1"></div>
-      <img className="umang" src={Umang} alt="My Local Image" />
+      
       <div className="about-umang">
+        <img className="umang" src={Umang} alt={Umang} />
         <h2>About Umang</h2>
         <p>
           about umang : Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -17,15 +18,9 @@ const AboutFaces = () => {
           facilisis mauris. Sed tincidunt sed lectus sed rutrum.
         </p>
       </div>
-      <div className="blob2"></div>
-      <div className="frame"></div>
-      <div>
-        <p>dummy1</p>
-        <p>dummy2</p>
-      </div>
-      <div className="blob1"></div>
-      {/* <img className="faces" src={myImage} alt="My Local Image" /> */}
+
       <div className="about-faces">
+        <img className="faces" src={Umang} alt={Umang} />
         <h2>About Faces</h2>
         <p>
           about faces : fLorem ipsum dolor sit amet, consectetur adipiscing
@@ -35,6 +30,7 @@ const AboutFaces = () => {
           hendrerit facilisis mauris. Sed tincidunt sed lectus sed rutrum.
         </p>
       </div>
+      
       <div className="blob2"></div>
     </div>
   );

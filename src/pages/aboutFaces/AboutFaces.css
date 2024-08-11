@@ -1,46 +1,7 @@
-
 .body {
-  background-color: #06252a;
-  align-content: start;
+  position: relative;
 }
 
-.umang {
-  top: 100px;
-  height: 357px;
-  position: absolute;
-  display: flex;
-  padding: 0 30px;
-  width: -webkit-fill-available;
+.body .about-umang,
+.body .about-faces {
 }
-.about-umang {
-  top: 485px;
-  position: absolute;
-  color: white;
-  text-align: justify;
-  padding: 0 30px;
-  text-align-last: center;
-}
-.frame {
-  height: 47px;
-  background-color: #86c8c4;
-  position: absolute;
-  width: 100%;
-  top: 792px;
-}
-.faces {
-  top: 910px;
-  height: 357px;
-  position: absolute;
-  display: flex;
-  padding: 0 30px;
-  width: -webkit-fill-available;
-}
-.about-faces {
-  top: 1295px;
-  position: absolute;
-  color: white;
-  text-align: justify;
-  padding: 0 30px;
-  text-align-last: center;
-}
-
