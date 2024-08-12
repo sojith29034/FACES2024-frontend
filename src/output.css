@@ -588,6 +588,10 @@ video {
   }
 }
 
+.relative {
+  position: relative;
+}
+
 .m-4 {
   margin: 1rem;
 }
@@ -654,10 +658,6 @@ video {
   flex-direction: row;
 }
 
-.flex-col {
-  flex-direction: column;
-}
-
 .items-center {
   align-items: center;
 }
@@ -668,6 +668,10 @@ video {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
@@ -811,30 +815,43 @@ h1 {
   line-height: 1.1;
 }
 
-@keyframes scroll-left {
+@keyframes scroll-left1 {
   0% {
-    transform: translateX(100vw);
+    transform: translateX(100%);
   }
 
   100% {
-    transform: translateX(-100vw);
+    transform: translateX(-100%);
   }
 }
 
-/* Container for the scrolling effect */
+@keyframes scroll-left2 {
+  0% {
+    transform: translateX(100%);
+  }
 
-.scroll-container {
-  display: flex;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
-/* Individual image styling with animation */
+.scroll-container {
+  min-width: 100%;
+}
+
+.scrolling-content1 {
+  display: flex;
+  /* animation: scroll-left1 10s linear infinite; */
+}
+
+.scrolling-content2 {
+  display: flex;
+  /* animation: scroll-left2 10s linear infinite; */
+}
 
 .sponsor-image {
+  width: auto;
   display: inline-block;
-  animation: scroll-left 10s linear infinite;
 }
 
 .blob1 {
