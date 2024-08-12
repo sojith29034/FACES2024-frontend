@@ -38,15 +38,16 @@ const HighLights = () => {
     {/* <div className="blob1"></div> */}
       <h2>HIGHLIGHTS</h2>
       {events.map((eventCategory, index) => (
-        <div key={index}>
+        <div key={index} className='flex-row overflow-hidden'>
           <h2>{eventCategory.category === 'sports' ? "SPORTS" : "CULTURAL"}</h2>
           <div
-            className="card-container flex animate-marquee"
+            className="card-container flex"
+            
             ref={eventCategory.category === 'sports' ? sportsContainerRef : culturalContainerRef}
           >
             {eventCategory.items.map((item, idx) => (
               <div
-                className="card"
+                className="card sponsor-image"
                 key={idx}
                 onClick={() => handleCardClick(item.title)}
               >

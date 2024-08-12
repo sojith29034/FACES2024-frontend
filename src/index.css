@@ -29,20 +29,47 @@ h1 {
   line-height: 1.1;
 }
 
-@keyframes marquee {
-  from {
+@keyframes scroll-left1 {
+  0% {
     transform: translateX(100%);
   }
-  to {
+  100% {
     transform: translateX(-100%);
   }
 }
 
-.animate-marquee {
-  display: flex;
-  width: 100%;
-  animation: marquee 15s linear infinite;
+@keyframes scroll-left2 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
+
+.scroll-container {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.scrolling-content1 {
+  display: flex;
+  animation: scroll-left1 10s linear infinite;
+}
+
+.scrolling-content2 {
+  display: flex;
+  animation: scroll-left2 10s linear infinite;
+}
+
+.sponsor-image {
+  width: auto;
+  display: inline-block;
+}
+
 
 
 .blob1 {
