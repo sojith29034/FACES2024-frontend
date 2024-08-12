@@ -35,7 +35,7 @@ const HighLights = () => {
   return (
     <>    
     <div className="landing-page">
-    <div className="blob1"></div>
+    {/* <div className="blob1"></div> */}
       <h2>HIGHLIGHTS</h2>
       {events.map((eventCategory, index) => (
         <div key={index}>
@@ -64,7 +64,7 @@ const HighLights = () => {
           </div>
         </div>
       ))}
-    <div className="blob2"></div>
+    {/* <div className="blob2"></div> */}
     </div>
     </>
   );
