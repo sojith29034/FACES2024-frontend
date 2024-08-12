@@ -47,7 +47,7 @@ const HighLights = () => {
           >
             {eventCategory.items.map((item, idx) => (
               <div
-                className="card sponsor-image"
+                className="card"
                 key={idx}
                 onClick={() => handleCardClick(item.title)}
               >
