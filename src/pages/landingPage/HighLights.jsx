@@ -48,9 +48,6 @@ const HighLights = () => {
             {eventCategory.items.map((item, idx) => (
               <div
                 className="card sponsor-image"
-                style={{
-                  animationDelay: `${idx*2}s`, // Stagger animation by 2s for each image
-                }}
                 key={idx}
                 onClick={() => handleCardClick(item.title)}
               >
