@@ -1,6 +1,7 @@
 import './AboutFaces.css';
 import Umang from '../../assets/umang.png';
 import myImage from "../../assets/finalimage.png"; // Importing the image
+import Sponsors from '../../components/Sponsors';
 
 
 const AboutFaces = () => {
@@ -17,16 +18,16 @@ const AboutFaces = () => {
       <div className="about-umang">
         <h2>About Umang</h2>
         <p>
-          about umang : Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit. Vestibulum ultricies libero ex, non porttitor est auctor
-          vitae. Proin vestibulum malesuada urna ut euismod. Donec eget
-          ullamcorper sapien, id posuere neque. Ut leo augue, semper sit amet
-          gravida ac, hendrerit facilisis mauris. Sed tincidunt sed lectus sed
-          rutrum.
+        “Umang” is a Hindi word that encapsulates the essence of boundless enthusiasm and excitement.
+Umang is not just a fleeting emotion but a deep-seated drive that inspires people to pursue their dreams and embrace life's experiences with an open heart.
+When enthusiasm meets the sportsmanship spirit, every match is an opportunity to grow, to push our limits, and to embrace the thrill of competition. True victory lies in the spirit of participation.
+So, let's come together for this exciting sports event that fills you with boundless UMANG and joy !!
         </p>
       </div>
     </div>
-    <div className="frame"></div>
+    <div>
+      <Sponsors />
+    </div>
     {/* <div className="dummy">
       <p>dummy1</p>
       <p>dummy2</p>

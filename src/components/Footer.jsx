@@ -3,7 +3,7 @@ import { FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 const Footer = () => {
   return (
     <footer className="bg-[#0E535F] text-white pt-6 pb-4 px-4">
-      <div className="container mx-auto text-center max-w-96">
+      <div className="container mx-auto text-center sm:max-w-96 md:max-w-128 lg:max-w-192 xl:max-w-256">
         {/* College Name */}
         <h2 className="text-xl font-semibold mb-4">
           Fr. C. Rodrigues Institute of Technology
