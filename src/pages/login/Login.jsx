@@ -19,7 +19,7 @@ function Login() {
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Name</label>
+          <label>Username</label>
           <input
             type="text"
             value={name}
@@ -27,15 +27,7 @@ function Login() {
             required
           />
         </div>
-        <div className="form-group">
-          <label>Roll Number</label>
-          <input
-            type="text"
-            value={rollNumber}
-            onChange={(e) => setRollNumber(e.target.value)}
-            required
-          />
-        </div>
+       
         <div className="form-group">
           <label>Password</label>
           <input
@@ -45,7 +37,7 @@ function Login() {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button className='Sbutton' type="submit">Login</button>
       </form>
     </div>
   );
