@@ -1,13 +1,32 @@
-
 .event-cards-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  box-sizing: border-box;
   margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box; 
+  overflow-x: hidden;
 }
+
+
+.day-selector button {
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  border-bottom: none;
+  transition: border-bottom 0.3s ease;
+}
+.day-selector button.active {
+  border-bottom: 2px solid #fff;
+}
+
+
+.category-selector, .day-selector{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  text-transform: uppercase;
+}
+
 
 @media (min-width: 768px) {
   .event-cards-container {
@@ -42,6 +61,7 @@
   justify-content: center;
   gap: 20px;
   transition: transform 0.6s;
+  margin: 20px auto;
 }
 
 .event-cards.flip {
@@ -57,13 +77,13 @@
 }
 
 
-.event-card {
-  background: white;
+.eventCard {
+  background: #E3F0FF;
   width: 90%;
   max-width: 300px;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(137, 118, 118, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,14 +92,12 @@
   box-sizing: border-box; 
   backface-visibility: hidden;
   transform: rotateY(0deg);
+  color: rgb(40, 114, 113);
 }
 
 .event-card-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
+  position: relative;
 }
 
 .event-card-details {
@@ -87,8 +105,10 @@
 }
 
 .event-card-details h3 {
-  margin: 0;
+  width: 100%;
+  margin-bottom: 5px;
   font-size: 1.2em;
+  text-align: center;
 }
 
 .event-card-details p {
@@ -103,16 +123,20 @@
 }
 
 .event-card-image {
-  flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .7;
 }
 
 .event-card-image img {
   width: 100px;
-  height: auto;
-  border-radius: 10px;
+  height: 100%;
+  object-fit: contain;
 }
 
 

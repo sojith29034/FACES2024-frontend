@@ -35,7 +35,7 @@ const HighLights = () => {
   return (
     <>    
     <div className="landing-page">
-    <div className="blob1"></div>
+    {/* <div className="blob1"></div> */}
       <h2>HIGHLIGHTS</h2>
       {events.map((eventCategory, index) => (
         <div key={index} className='flex-row overflow-hidden'>
@@ -47,7 +47,7 @@ const HighLights = () => {
           >
             {eventCategory.items.map((item, idx) => (
               <div
-                className="card sponsor-image"
+                className="card"
                 key={idx}
                 onClick={() => handleCardClick(item.title)}
               >
@@ -65,7 +65,7 @@ const HighLights = () => {
           </div>
         </div>
       ))}
-    <div className="blob2"></div>
+    {/* <div className="blob2"></div> */}
     </div>
     </>
   );

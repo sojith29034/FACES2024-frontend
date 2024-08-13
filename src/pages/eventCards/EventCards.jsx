@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faMapMarkerAlt, faChair, faTag } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faMapMarkerAlt, faChair, faTag, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import './eventcard.css';
 
 const eventsData = {
@@ -85,18 +85,17 @@ const EventCards = () => {
       setTimeout(() => {
         setCurrentDay(day);
         setSlide('');
-      }, 600); 
+      }, 400); 
     }
   };
 
-  const handleCategoryChange = (category) => {
-    if (category !== currentCategory) {
-      setFlip(true);
-      setTimeout(() => {
-        setCurrentCategory(category);
-        setFlip(false);
-      }, 500); 
-    }
+  const handleCategoryToggle = () => {
+    const newCategory = currentCategory === 'sports' ? 'cultural' : 'sports';
+    setFlip(true);
+    setTimeout(() => {
+      setCurrentCategory(newCategory);
+      setFlip(false);
+    }, 500); 
   };
 
   return (
@@ -107,13 +106,18 @@ const EventCards = () => {
         <button onClick={() => handleDayChange('day3')} className={currentDay === 'day3' ? 'active' : ''}>DAY 3</button>
       </div>
       <div className="category-selector">
-        <button onClick={() => handleCategoryChange('sports')} className={currentCategory === 'sports' ? 'active' : ''}>Sports</button>
-        <button onClick={() => handleCategoryChange('cultural')} className={currentCategory === 'cultural' ? 'active' : ''}>Cultural</button>
+        <button onClick={handleCategoryToggle} className="arrow-button">
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </button>
+        <span>{currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}</span>
+        <button onClick={handleCategoryToggle} className="arrow-button">
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
       </div>
       <div className={`event-cards-wrapper`}>
         <div className={`event-cards ${flip ? 'flip' : slide}`}>
           {eventsData[currentDay][currentCategory].map((event, index) => (
-            <div className="event-card" key={index}>
+            <div className="eventCard" key={index}>
               <div className="event-card-content">
                 <div className="event-card-details">
                   <h3>{event.title}</h3>
@@ -126,9 +130,9 @@ const EventCards = () => {
                     <p><FontAwesomeIcon icon={faTag} /> {event.price}</p>
                   </div>
                 </div>
-                <div className="event-card-image">
+                {/* <div className="event-card-image">
                   <img src={event.image} alt={event.title} />
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
