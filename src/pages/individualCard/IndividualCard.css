@@ -1,11 +1,11 @@
 /* General styles for the event card */
 .event-card {
-    width: auto;
+    height: 100%;
+    width: 100%;
     background-color: #062030;
     color: white;
-    border-radius: 10px;
     padding: 20px;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: auto;
     font-family: Arial, sans-serif;
     display: flex;
@@ -19,6 +19,8 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: 100%;
+    justify-content: flex-start; /* Align items at the top */
 }
 
 /* Text content container */
@@ -27,14 +29,16 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    height: 100%;
 }
 
 /* Image container styles */
 .event-image {
+    margin-top: 12%;
+    height: auto;
     background-color: #86c8c4; /* Background color surrounding the image */
     border-radius: 15px;
-    width: 100%;
-    padding-top: 100%; /* Square aspect ratio */
+    width: 85%;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -45,62 +49,34 @@
 
 /* Image styles */
 .event-image img {
-    margin-top: -94%;
-    margin-bottom: 4%;
-    max-width: 88%; /* Adjust max width to fit the image inside the container with padding */
-    max-height: 80%; /* Adjust max height to maintain the aspect ratio */
+    transform: scale(0.9) translate(0%, 0%);
+    max-width: 100%; /* Adjust to ensure the image doesn't exceed the container */
+    max-height: 100%; /* Ensure the image maintains its aspect ratio */
     object-fit: contain; /* Ensure the image is fully contained within the box */
-    border-radius: 15px; /* Match the container's rounded corners */
-}
-
-/* Event title styles */
-h2 {
-    padding-top: 5%;
-    margin: 20px 10px;
-    font-size: 18px;
-    text-align: center;
-}
-
-/* Styling the event details section */
-.event-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 18px;
-    line-height: 1.5;
-    margin: 10px 0;
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
-}
-
-/* Description styles */
-.event-description {
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 5%;
-    text-align: justify;
+    border-radius: 25px; /* Match the container's rounded corners */
 }
 
 /* Seats information styles */
 .seats-info {
+    /* margin-bottom: 4%; */
     justify-content: center;
     text-align: center;
     font-size: 18px;
     margin: 10px 0;
 }
 
-/* Input section styles */
-.roll-number-input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 10px;
-}
+            /* Input section styles */
+            .roll-number-input {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 20px;
+                gap: 10px;
+            }
 
 /* Input field styles */
 .roll-number-input input {
+    width: 50%;
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 25px;
@@ -113,22 +89,24 @@ h2 {
 
 /* Button styles */
 .roll-number-input button {
-    padding: 10px 20px;
-    font-size: 16px;
+    /* padding: 10px 20px; */
+    width: 23%;
+    font-size: 24px;
     background-color: #86c8c4;
     color: #062030;
     border: none;
     cursor: pointer;
-    border-radius: 25px;
+    border-radius: 10px;
     outline: none;
 }
 
 /* Roll number container styles */
 .roll-number-list-container {
-    background-color: #86c8c4;
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 20px;
+    max-width: 60%;
+    align-self: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 20px;    
 }
 
 /* Roll number list styles */
@@ -143,7 +121,7 @@ h2 {
 .roll-number {
     background-color: #BDE1DF;
     padding: 10px 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 14px;
     color: #062030;
     border: 2px solid #062030;
@@ -159,15 +137,50 @@ h2 {
     padding: 10px 20px;
     font-size: 16px;
     color: #062030;
-    border-radius: 15px;
+    border-radius: 20px;
     cursor: pointer;
     outline: none;
     margin-bottom: 20px;
 }
 
+/* Event title styles */
+.title {
+    margin-top: 12%;
+    font-size: 24px; /* Adjust the size as needed */
+    font-weight: bold; 
+    justify-self: center;
+    justify-content: center;
+    align-self: center;
+}
+
+/* Styling the event details section */
+.event-details {
+    margin-bottom: 6%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Description styles */
+.event-description {
+    font-size: 14px;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 1.5;
+    text-align: justify;
+    margin-top: 10%;
+}
+
 /* Responsive styles for larger screens */
 @media screen and (min-width: 768px) {
+
     .event-card {
+        max-height: 2800px;
         flex-direction: row; /* Switch to row layout for desktop */
     }
 
@@ -176,45 +189,43 @@ h2 {
     }
 
     .right-section {
+        margin-bottom: 10%;
         width: 60%; /* Right section takes up 60% of the width */
-        padding-left: 20px; /* Add some padding for spacing */
+        padding-left: 0px; /* Add some padding for spacing */
     }
 
     .event-image {
-        width: 100%;
-        padding-top: 100%; /* Maintain square aspect ratio */
+        width: 69%;
+        height: auto;
     }
 
-    h2 {
+    .event-details {
+        margin-top: 2%;
         font-size: 24px;
         text-align: center;
         justify-content: center;
     }
 
-    .event-details {
-        font-size: 20px;
-        /* align-items: flex-start; */
-        text-align: center;
-        justify-content: center;
-    }
-
     .event-description {
+        margin-left: 5%;
+        margin-right: 5%;
         font-size: 16px;
         text-align: left;
     }
 
     .seats-info {
+        margin-top: 6%;
+        margin-bottom: 4%;
         font-size: 20px;
     }
 
     .roll-number-input input, .roll-number-input button {
         padding: 15px 30px;
-        font-size: 18px;
+        font-size: 12px;
     }
 
     .join-button {
         width: 100px;
-        padding: 15px 30px;
         font-size: 18px;
     }
 }
