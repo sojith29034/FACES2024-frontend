@@ -41,7 +41,7 @@ const HighLights = () => {
         <div key={index} className='flex-row overflow-hidden'>
           <h2>{eventCategory.category === 'sports' ? "SPORTS" : "CULTURAL"}</h2>
           <div
-            className="card-container flex"
+            className="card-container  flex"
             
             ref={eventCategory.category === 'sports' ? sportsContainerRef : culturalContainerRef}
           >
@@ -51,7 +51,7 @@ const HighLights = () => {
                 key={idx}
                 onClick={() => handleCardClick(item.title)}
               >
-                <div className="small-box">
+                <div className="small-box ">
                   <div className="card-body">
                     <h3>{item.title}</h3>
                     <p><FontAwesomeIcon icon={faClock} /> {item.time}</p>

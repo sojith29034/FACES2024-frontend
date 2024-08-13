@@ -7,6 +7,7 @@ import AboutFaces from './pages/aboutFaces/AboutFaces';
 import EventCards from './pages/eventCards/EventCards';
 import IndividualCard from './pages/individualCard/IndividualCard';
 import Profile from './pages/profile/Profile';
+import Login from './pages/login/Login';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path='/eventCards' element={<Mainframe element={<EventCards/>} />}/>
         <Route path='/individualCard' element={<Mainframe element={<IndividualCard />} />} />
         <Route path='/profile' element={<Mainframe element={<Profile/>} />}/>
+        <Route path='/login'  element={<Mainframe element={<Login/>} />}/>
       </Routes>
     </Router>
   )
