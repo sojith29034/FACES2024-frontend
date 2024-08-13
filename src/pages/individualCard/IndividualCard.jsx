@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './IndividualCard.css';
-import Sponsors from '../../components/Sponsors';
 
 const IndividualCard = () => {
   const [rollNumbers, setRollNumbers] = useState([]);
@@ -23,12 +22,26 @@ const IndividualCard = () => {
   };
 
   return (
-    <>
-    <div className="event-card">
-      <div className="left-section">
+    <div className="grid-container">
+      {/* Event Image */}
+      <div className="grid-item grid-item-1">
         <div className="event-image">
           <img src="src/assets/football.jpg" alt="Football Event" />
         </div>
+      </div>
+
+      {/* Event Title and Details */}
+      <div className="grid-item grid-item-2">
+        <div className="title">
+          <span className="big-bold-text">FOOTBALL (MENS)</span>
+        </div>
+        <div className="event-details">
+          <p>Day<br />Time<br />Venue<br />Price</p>
+        </div>
+      </div>
+
+      {/* Seats Info, Roll Number Input, and Join Button */}
+      <div className="grid-item grid-item-3">
         <div className="seats-info"><b>Seats: {seats - rollNumbers.length}/{seats}</b></div>
         <div className="roll-number-input">
           <input
@@ -48,20 +61,14 @@ const IndividualCard = () => {
         </div>
         <button className="join-button">Join</button>
       </div>
-      <div className="right-section">
-        <div className="title">
-          <span className="big-bold-text">FOOTBALL (MENS)</span>
-        </div>
-        <div className="event-details">
-          <p>Day<br />Time<br />Venue<br />Price</p>
-        </div>
+
+      {/* Event Description */}
+      <div className="grid-item grid-item-4">
         <p className="event-description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultricies libero ex, non porttitor est auctor vitae. Proin vestibulum malesuada urna ut euismod. Donec eget ullamcorper sapien, id posuere neque. Ut leo augue, semper sit amet gravida ac, hendrerit facilisis mauris. Sed tincidunt sed lectus sed rutrum.
         </p>
       </div>
     </div>
-    <Sponsors />
-    </>
   );
 };
 
