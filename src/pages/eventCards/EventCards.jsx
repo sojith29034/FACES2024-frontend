@@ -1,82 +1,30 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getEvents } from '../../api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faMapMarkerAlt, faChair, faTag, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faChair, faTag, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import './eventcard.css';
-
-const eventsData = {
-  day1: {
-    sports: [
-      { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
-      { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
-      { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
-      { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
-      { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
-      { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
-      { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', seats: '10/20', price: '200/-', image: './src/assets/image.png' },
-      
-    ],
-    cultural: [
-      { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
-      { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
-      { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
-      { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
-      { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
-      { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
-      { title: 'Dance Performance', time: '03:00 pm', location: 'Hall', seats: '50/100', price: '500/-', image: './src/assets/image.png' },
-   
-    ],
-  },
-  day2: {
-    sports: [
-      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
-      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
-      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
-      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
-      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
-      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
-      { title: 'Basketball (Mens)', time: '11:00 am', location: 'Court', seats: '12/24', price: '250/-', image: './src/assets/image.png' },
-
-    ],
-    cultural: [
-      { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
-      { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
-      { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
-      { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
-      { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
-      { title: 'Art Exhibition', time: '02:00 pm', location: 'Gallery', seats: '30/50', price: '300/-', image: './src/assets/image.png' },
-
-    ],
-  },
-  day3: {
-    sports: [
-      { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
-      { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
-      { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
-      { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
-      { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
-      { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
-      { title: 'Volleyball (Mixed)', time: '01:00 pm', location: 'Beach', seats: '15/30', price: '150/-', image: './src/assets/image.png' },
-  
-    ],
-    cultural: [
-      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
-      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
-      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
-      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
-      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
-      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
-      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
-      { title: 'Music Concert', time: '07:00 pm', location: 'Theatre', seats: '100/200', price: '700/-', image: './src/assets/image.png' },
-
-    ],
-  },
-};
+import { Link } from 'react-router-dom';
 
 const EventCards = () => {
+  const [eventsData, setEventsData] = useState(null);
   const [currentDay, setCurrentDay] = useState('day1');
-  const [currentCategory, setCurrentCategory] = useState('sports');
+  const [currentCategory, setCurrentCategory] = useState('C'); // Start with Cultural category
   const [flip, setFlip] = useState(false);
   const [slide, setSlide] = useState('');
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const eventData = await getEvents();
+        setEventsData(eventData.data); // Ensure you're setting the correct data
+        console.log(eventData.data); // Log to inspect the structure
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   const handleDayChange = (day) => {
     if (day !== currentDay) {
@@ -85,18 +33,26 @@ const EventCards = () => {
       setTimeout(() => {
         setCurrentDay(day);
         setSlide('');
-      }, 400); 
+      }, 400);
     }
   };
 
   const handleCategoryToggle = () => {
-    const newCategory = currentCategory === 'sports' ? 'cultural' : 'sports';
+    const newCategory = currentCategory === 'C' ? 'S' : 'C';
     setFlip(true);
     setTimeout(() => {
       setCurrentCategory(newCategory);
       setFlip(false);
-    }, 500); 
+    }, 500);
   };
+
+  if (!eventsData) {
+    return <div>Loading...</div>; // Show loading indicator while fetching data
+  }
+
+  const filteredEvents = eventsData.events.filter(event => 
+    event.day === parseInt(currentDay.replace('day', '')) && event.category === currentCategory
+  );
 
   return (
     <div className="event-cards-container">
@@ -109,33 +65,37 @@ const EventCards = () => {
         <button onClick={handleCategoryToggle} className="arrow-button">
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
-        <span>{currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}</span>
+        <span>
+          {currentCategory === 'C' ? 'Cultural' : 'Sports'}
+        </span>
         <button onClick={handleCategoryToggle} className="arrow-button">
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
       </div>
       <div className={`event-cards-wrapper`}>
         <div className={`event-cards ${flip ? 'flip' : slide}`}>
-          {eventsData[currentDay][currentCategory].map((event, index) => (
-            <div className="eventCard" key={index}>
-              <div className="event-card-content">
-                <div className="event-card-details">
-                  <h3>{event.title}</h3>
-                  <div className="event-info">
-                    <p><FontAwesomeIcon icon={faClock} /> {event.time}</p>
-                    <p><FontAwesomeIcon icon={faChair} /> {event.seats}</p>
-                  </div>
-                  <div className="event-info">
-                    <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {event.location}</p>
-                    <p><FontAwesomeIcon icon={faTag} /> {event.price}</p>
+          {filteredEvents.length > 0 ? (
+            filteredEvents.map((event, index) => (
+              <Link to={`/individualCard/${event.event_code}`} key={index}>
+                <div className="eventCard">
+                  <div className="event-card-content">
+                    <div className="event-card-details">
+                      <h3>{event.title}</h3>
+                      <div className="event-info">
+                        <p><FontAwesomeIcon icon={faClock} /> {event.start} - {event.end}</p>
+                        <p><FontAwesomeIcon icon={faChair} /> {event.seats}/{event.max_seats}</p>
+                      </div>
+                      <div className="event-info">
+                        <p><FontAwesomeIcon icon={faTag} /> {event.entry_fee}/-</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                {/* <div className="event-card-image">
-                  <img src={event.image} alt={event.title} />
-                </div> */}
-              </div>
-            </div>
-          ))}
+              </Link>
+            ))
+          ) : (
+            <div>No events available for this day and category.</div>
+          )}
         </div>
       </div>
     </div>
