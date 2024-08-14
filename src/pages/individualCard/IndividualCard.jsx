@@ -1,36 +1,63 @@
 import { useState, useEffect } from 'react';
-import { getEventDetails } from '../../api';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getEventDetails, getUserDetails } from '../../api';
 import './IndividualCard.css';
 import Sponsors from '../../components/Sponsors';
+import { useAuth } from '../../AuthContext';
 
-const IndividualCard = () => {
+const BASE_URL = 'http://127.0.0.1:8000/';
+
+const IndividualCard = ({ setEventsToCheckout, eventToCheckOut }) => {
+  const { eventCode } = useParams();
+  const navigate = useNavigate();
+  const { authState } = useAuth();
+  const [eventData, setEventData] = useState(null);
+  const [user, setUser] = useState(null);
   const [rollNumbers, setRollNumbers] = useState([]);
   const [newRollNumber, setNewRollNumber] = useState('');
-  const { eventCode } = useParams();
-  const [eventData, setEventData] = useState(null);
 
   useEffect(() => {
-    const fetchEvents = async () => {
+    const fetchEventDetails = async () => {
       try {
-        const eventData = await getEventDetails(eventCode);
-        setEventData(eventData.data.event); // Set the correct event data
-        console.log(eventData.data.event); // Log to inspect the structure
+        const response = await getEventDetails(eventCode);
+        setEventData(response.data.event); // Set eventData once fetched
       } catch (error) {
-        console.error("Error fetching events:", error);
+        console.error('Error fetching event details:', error);
       }
     };
-  
-    fetchEvents();
-  }, [eventCode]);
 
-  if (!eventData) return <div>Loading...</div>;
+    fetchEventDetails();
+  }, [eventCode]); // Only depends on eventCode
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      if (authState.token) {
+        try {
+          const response = await getUserDetails(authState.token);
+          setUser(response.data.user); // Set user data once fetched
+        } catch (error) {
+          console.error('Error fetching user details:', error);
+        }
+      }
+    };
+
+    fetchUserDetails();
+  }, [authState.token]); // Only depends on the token
+
+  // A third effect to handle automatic roll number addition after both data are fetched
+  useEffect(() => {
+    if (user && eventData && eventData.team_size === 1) {
+      setRollNumbers([user.roll_no]);
+    }
+  }, [user, eventData]); // Depends on both user and eventData
+
+  if (!eventData || !user) return <div>Loading...</div>;
 
   const handleAddRollNumber = () => {
     if (/^\d{7}$/.test(newRollNumber)) {
       if (rollNumbers.includes(newRollNumber)) {
         alert('This roll number has already been added.');
-      } else if (rollNumbers.length < eventData.max_seats) { // Use max_seats from event data
+      } else if (rollNumbers.length < eventData.max_seats) {
         setRollNumbers([...rollNumbers, newRollNumber]);
         setNewRollNumber('');
       } else {
@@ -41,25 +68,51 @@ const IndividualCard = () => {
     }
   };
 
+  const handleSave = () => {
+    if (rollNumbers.length === 0) {
+      alert('Please add at least one roll number.');
+      return;
+    }
+
+    const newEvent = {
+      eventCode: eventCode, // Replace with your event code logic
+      rollNumbers: [...rollNumbers],
+      title: eventData.title, // Replace with your event title logic
+      start: eventData.start, // Replace with your event start time
+      end: eventData.end // Replace with your event end time
+    };
+
+    // Add the new event to the checkout list
+    setEventsToCheckout(prevEvents => [...prevEvents, newEvent]);
+
+    // Optionally store in localStorage if needed
+    localStorage.setItem('eventsToCheckout', JSON.stringify([...eventToCheckOut, newEvent]));
+
+    navigate('/profile'); // Redirect to the profile page
+  };
+  
+
   return (
     <>
       <div className="event-card">
         <div className="left-section">
           <div className="event-image">
-            <img src={eventData.image || "src/assets/football.jpg"} alt={eventData.title || "Event"} />
+            <img src={`${BASE_URL}${eventData.image}`} alt={eventData.title || "Event"} />
           </div>
           <div className="seats-info">
             <b>Seats: {eventData.max_seats - rollNumbers.length}/{eventData.max_seats}</b>
           </div>
-          <div className="roll-number-input">
-            <input
-              type="text"
-              placeholder="Roll no"
-              value={newRollNumber}
-              onChange={(e) => setNewRollNumber(e.target.value)}
-            />
-            <button onClick={handleAddRollNumber}>Add</button>
-          </div>
+          {eventData.team_size > 1 && (
+            <div className="roll-number-input">
+              <input
+                type="text"
+                placeholder="Roll no"
+                value={newRollNumber}
+                onChange={(e) => setNewRollNumber(e.target.value)}
+              />
+              <button onClick={handleAddRollNumber}>Add</button>
+            </div>
+          )}
           <div className="roll-number-list-container">
             <div className="roll-number-list">
               {rollNumbers.map((roll, index) => (
@@ -67,7 +120,7 @@ const IndividualCard = () => {
               ))}
             </div>
           </div>
-          <button className="join-button">Join</button>
+          <button className="join-button" onClick={handleSave}>Save</button>
         </div>
         <div className="right-section">
           <div className="title">

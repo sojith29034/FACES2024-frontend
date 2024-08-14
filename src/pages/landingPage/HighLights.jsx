@@ -1,6 +1,6 @@
-
-
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { getEvents } from '../../api';
 import '../landingPage/HighLight.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faMapMarkerAlt, faCalendarAlt, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
@@ -8,65 +8,65 @@ import { faClock, faMapMarkerAlt, faCalendarAlt, faMoneyBill } from '@fortawesom
 const HighLights = () => {
   const sportsContainerRef = useRef(null);
   const culturalContainerRef = useRef(null);
+  const [eventsData, setEventsData] = useState(null);
+  const [currentCategory, setCurrentCategory] = useState('S'); // Default to 'S' for Sports
 
-  const events = [
-    {
-      category: 'sports',
-      items: [
-        { title: 'Football (Mens)', time: '10:00 am', location: 'Turf', date: '10/20', fee: '200/-' },
-        { title: 'Basketball', time: '12:00 pm', location: 'Court', date: '10/21', fee: '150/-' },
-        { title: 'Tennis', time: '2:00 pm', location: 'Court', date: '10/22', fee: '100/-' },
-      ],
-    },
-    {
-      category: 'cultural',
-      items: [
-        { title: 'Dance Competition', time: '4:00 pm', location: 'Auditorium', date: '10/20', fee: '50/-' },
-        { title: 'Singing Contest', time: '6:00 pm', location: 'Stage', date: '10/21', fee: '100/-' },
-        { title: 'Drama', time: '8:00 pm', location: 'Theatre', date: '10/22', fee: '75/-' },
-      ],
-    },
-  ];
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const eventData = await getEvents();
+        setEventsData(eventData.data); // Ensure you're setting the correct data
+        console.log(eventData.data); // Log to inspect the structure
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
 
-  const handleCardClick = (title) => {
-    alert(`Clicked on: ${title}`);
-  };
+    fetchEvents();
+  }, []);
+
+  if (!eventsData) {
+    return <div>Loading...</div>; // Show loading indicator while fetching data
+  }
+
+  // Filter events to show only featured events
+  const featuredEvents = eventsData.events.filter(event => event.is_featured);
+
+  // Further filter featured events based on the current category
+  const filteredEvents = featuredEvents.filter(event => event.category === currentCategory);
 
   return (
     <>    
-    <div className="landing-page">
-    {/* <div className="blob1"></div> */}
-      <h2>HIGHLIGHTS</h2>
-      {events.map((eventCategory, index) => (
-        <div key={index} className='flex-row overflow-hidden'>
-          <h2>{eventCategory.category === 'sports' ? "SPORTS" : "CULTURAL"}</h2>
-          <div
-            className="card-container  flex"
-            
-            ref={eventCategory.category === 'sports' ? sportsContainerRef : culturalContainerRef}
-          >
-            {eventCategory.items.map((item, idx) => (
-              <div
-                className="card"
-                key={idx}
-                onClick={() => handleCardClick(item.title)}
-              >
-                <div className="small-box ">
-                  <div className="card-body">
-                    <h3>{item.title}</h3>
-                    <p><FontAwesomeIcon icon={faClock} /> {item.time}</p>
-                    <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {item.location}</p>
-                    <p><FontAwesomeIcon icon={faCalendarAlt} /> {item.date}</p>
-                    <p><FontAwesomeIcon icon={faMoneyBill} /> {item.fee}</p>
+      <div className="landing-page">
+        {/* <div className="blob1"></div> */}
+        <h2>HIGHLIGHTS</h2>
+        {['S', 'C'].map((category, index) => (
+          <div key={index} className='flex-row overflow-hidden'>
+            <h2>{category === 'S' ? 'SPORTS' : 'CULTURAL'}</h2>
+            <div
+              className="card-container flex"
+              ref={category === 'S' ? sportsContainerRef : culturalContainerRef}
+            >
+              {featuredEvents.filter(event => event.category === category).map((item, idx) => (
+                <Link to={`/individualCard/${item.event_code}`} key={idx}>
+                  <div className="card">
+                    <div className="small-box">
+                      <div className="card-body">
+                        <h3>{item.title}</h3>
+                        <p><FontAwesomeIcon icon={faClock} /> {item.start} - {item.end}</p>
+                        <p><FontAwesomeIcon icon={faMapMarkerAlt} /> {item.location}</p>
+                        <p><FontAwesomeIcon icon={faCalendarAlt} /> {item.day}</p>
+                        <p><FontAwesomeIcon icon={faMoneyBill} /> {item.entry_fee}/-</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
-    {/* <div className="blob2"></div> */}
-    </div>
+        ))}
+        {/* <div className="blob2"></div> */}
+      </div>
     </>
   );
 };

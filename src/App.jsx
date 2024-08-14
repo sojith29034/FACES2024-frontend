@@ -1,3 +1,4 @@
+// src/App.jsx
 import './App.css';
 import { useState, useEffect } from 'react';
 import { getEvents, getFeaturedEvents } from './api.js';
@@ -10,11 +11,14 @@ import AboutFaces from './pages/aboutFaces/AboutFaces';
 import EventCards from './pages/eventCards/EventCards';
 import IndividualCard from './pages/individualCard/IndividualCard';
 import Profile from './pages/profile/Profile';
-
+import { AuthProvider } from './AuthContext'; // Import AuthProvider
+import { EventProvider } from './contexts/EventContext'; // Import EventProvider
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   const [events, setEvents] = useState([]);
   const [featuredEvents, setFeaturedEvents] = useState([]);
+  const [eventsToCheckout, setEventsToCheckout] = useState([]); // Centralized state
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -23,36 +27,40 @@ function App() {
       
       setEvents(eventData);
       setFeaturedEvents(featuredEventData);
-
-      console.log(eventData);
-      console.log(featuredEventData);
     };
 
     fetchEvents();
   }, []);
 
-  // eslint-disable-next-line react/prop-types
-  const Mainframe = ({element}) => {
-    return (
-      <>
-        <Navbar />
-        {element}
-        <Footer />
-      </>
-    );
-  };
+  const Mainframe = ({ element }) => (
+    <>
+      <Navbar />
+      {element}
+      <Footer />
+    </>
+  );
 
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Mainframe element={<LandingPage />} />} />
-        <Route path='/aboutFaces' element={<Mainframe element={<AboutFaces />} />} />
-        <Route path='/eventCards' element={<Mainframe element={<EventCards />} />} />
-        <Route path='/individualCard/:eventCode' element={<Mainframe element={<IndividualCard />} />} />
-        <Route path='/profile' element={<Mainframe element={<Profile />} />} />
-        <Route path='/login'  element={<Mainframe element={<Login/>} />}/>
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <EventProvider>
+        <Router>
+          <Routes>
+            <Route path='/' element={<Mainframe element={<LandingPage />} />} />
+            <Route path='/aboutFaces' element={<Mainframe element={<AboutFaces />} />} />
+            <Route path='/eventCards' element={<Mainframe element={<EventCards />} />} />
+            <Route
+            path="/profile"
+            element={<Profile eventToCheckOut={eventsToCheckout} setEventsToCheckout={setEventsToCheckout} />}
+          />
+          <Route
+            path="/individualCard/:eventCode"
+            element={<IndividualCard setEventsToCheckout={setEventsToCheckout} eventToCheckOut={eventsToCheckout} />}
+          />
+            <Route path='/login' element={<Mainframe element={<Login />} />} />
+          </Routes>
+        </Router>
+      </EventProvider>
+    </AuthProvider>
   );
 }
 
