@@ -15,6 +15,7 @@ const IndividualCard = ({ setEventsToCheckout, eventToCheckOut }) => {
   const [user, setUser] = useState(null);
   const [rollNumbers, setRollNumbers] = useState([]);
   const [newRollNumber, setNewRollNumber] = useState('');
+  const [teamName, setTeamName] = useState('');
 
   useEffect(() => {
     const fetchEventDetails = async () => {
@@ -69,6 +70,11 @@ const IndividualCard = ({ setEventsToCheckout, eventToCheckOut }) => {
   };
 
   const handleSave = () => {
+    if (eventData.is_team_size_strict && rollNumbers.length < eventData.team_size) {
+      alert(`Please add ${eventData.team_size - rollNumbers.length} more roll numbers to complete the team.`);
+      return;
+    }
+
     if (rollNumbers.length === 0) {
       alert('Please add at least one roll number.');
       return;
@@ -79,7 +85,8 @@ const IndividualCard = ({ setEventsToCheckout, eventToCheckOut }) => {
       rollNumbers: [...rollNumbers],
       title: eventData.title, // Replace with your event title logic
       start: eventData.start, // Replace with your event start time
-      end: eventData.end // Replace with your event end time
+      end: eventData.end, // Replace with your event end time
+      teamName: teamName || user.roll_no // Include team name if applicable
     };
 
     // Add the new event to the checkout list
@@ -90,7 +97,6 @@ const IndividualCard = ({ setEventsToCheckout, eventToCheckOut }) => {
 
     navigate('/profile'); // Redirect to the profile page
   };
-  
 
   return (
     <>
@@ -100,18 +106,29 @@ const IndividualCard = ({ setEventsToCheckout, eventToCheckOut }) => {
             <img src={`${BASE_URL}${eventData.image}`} alt={eventData.title || "Event"} />
           </div>
           <div className="seats-info">
-            <b>Seats: {eventData.max_seats - rollNumbers.length}/{eventData.max_seats}</b>
+            <b>Seats: {eventData.seats + rollNumbers.length}/{eventData.max_seats}</b>
           </div>
           {eventData.team_size > 1 && (
-            <div className="roll-number-input">
-              <input
-                type="text"
-                placeholder="Roll no"
-                value={newRollNumber}
-                onChange={(e) => setNewRollNumber(e.target.value)}
-              />
-              <button onClick={handleAddRollNumber}>Add</button>
-            </div>
+            <>
+              <div className="team-name-input m-4">
+                <input
+                className='p-2'
+                  type="text"
+                  placeholder="Team Name"
+                  value={teamName}
+                  onChange={(e) => setTeamName(e.target.value)}
+                />
+              </div>
+              <div className="roll-number-input">
+                <input
+                  type="text"
+                  placeholder="Roll no"
+                  value={newRollNumber}
+                  onChange={(e) => setNewRollNumber(e.target.value)}
+                />
+                <button onClick={handleAddRollNumber}>Add</button>
+              </div>
+            </>
           )}
           <div className="roll-number-list-container">
             <div className="roll-number-list">
