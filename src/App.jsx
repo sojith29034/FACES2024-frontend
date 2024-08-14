@@ -1,14 +1,16 @@
 import './App.css';
+import { useState, useEffect } from 'react';
 import { getEvents, getFeaturedEvents } from './api.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Login from './pages/login/Login.jsx';
 import LandingPage from './pages/landingPage/LandingPage';
 import AboutFaces from './pages/aboutFaces/AboutFaces';
 import EventCards from './pages/eventCards/EventCards';
 import IndividualCard from './pages/individualCard/IndividualCard';
 import Profile from './pages/profile/Profile';
-import { useEffect, useState } from 'react';
+
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -48,6 +50,7 @@ function App() {
         <Route path='/eventCards' element={<Mainframe element={<EventCards />} />} />
         <Route path='/individualCard/:eventCode' element={<Mainframe element={<IndividualCard />} />} />
         <Route path='/profile' element={<Mainframe element={<Profile />} />} />
+        <Route path='/login'  element={<Mainframe element={<Login/>} />}/>
       </Routes>
     </Router>
   );

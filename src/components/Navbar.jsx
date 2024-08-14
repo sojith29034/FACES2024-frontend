@@ -11,11 +11,10 @@ const Navbar = () => {
   return (
     <nav className="bg-[#0E535F]">
       <div className="container mx-auto flex justify-between items-center p-4">
-        
 
         {/* Logo */}
         <div className="text-white text-lg font-inter font-normal">
-          UMANG {/* Replace "MyLogo" with your actual logo */}
+          <Link to="/" className="hover:text-[#c8ebeb]">UMANG</Link>
         </div>
 
         {/* Hamburger Menu Button (Hidden on Desktop) */}
@@ -55,6 +54,9 @@ const Navbar = () => {
           <Link to="/profile" className="text-white text-lg hover:bg-[#0E535F] py-2">
             Profile
           </Link>
+          <Link to="/login" className="text-white text-lg hover:bg-[#0E535F] py-2">
+            Login
+          </Link>
         </div>
       </div>
 
@@ -75,6 +77,9 @@ const Navbar = () => {
           </Link>
           <Link to="/profile" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">
             Profile
+          </Link>
+          <Link to="/login" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">
+            Login
           </Link>
         </div>
       </div>
