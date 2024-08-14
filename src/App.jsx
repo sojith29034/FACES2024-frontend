@@ -50,11 +50,11 @@ function App() {
             <Route path='/eventCards' element={<Mainframe element={<EventCards />} />} />
             <Route
             path="/profile"
-            element={<Profile eventToCheckOut={eventsToCheckout} setEventsToCheckout={setEventsToCheckout} />}
+            element={<Mainframe element={<Profile eventToCheckOut={eventsToCheckout} setEventsToCheckout={setEventsToCheckout}/>} />}
           />
           <Route
             path="/individualCard/:eventCode"
-            element={<IndividualCard setEventsToCheckout={setEventsToCheckout} eventToCheckOut={eventsToCheckout} />}
+            element={<Mainframe element={<IndividualCard setEventsToCheckout={setEventsToCheckout} eventToCheckOut={eventsToCheckout}/>} />}
           />
             <Route path='/login' element={<Mainframe element={<Login />} />} />
           </Routes>
