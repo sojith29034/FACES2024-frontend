@@ -1,8 +1,11 @@
+// src/components/Navbar.jsx
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../AuthContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { authState, logout } = useAuth();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -39,48 +42,34 @@ const Navbar = () => {
 
         {/* Navbar Links (Visible on Desktop) */}
         <div className="hidden md:flex space-x-4">
-          <Link to="/" className="text-white text-lg hover:bg-[#0E535F] py-2">
-            Home
-          </Link>
-          <Link to="/aboutFaces" className="text-white text-lg hover:bg-[#0E535F] py-2">
-            About Faces
-          </Link>
-          <Link to="/eventCards" className="text-white text-lg hover:bg-[#0E535F] py-2">
-            Event Cards
-          </Link>
-          <Link to="/individualCard" className="text-white text-lg hover:bg-[#0E535F] py-2">
-            Individual Card
-          </Link>
-          <Link to="/profile" className="text-white text-lg hover:bg-[#0E535F] py-2">
-            Profile
-          </Link>
-          <Link to="/login" className="text-white text-lg hover:bg-[#0E535F] py-2">
-            Login
-          </Link>
+          <Link to="/" className="text-white text-lg hover:bg-[#0E535F] py-2">Home</Link>
+          <Link to="/aboutFaces" className="text-white text-lg hover:bg-[#0E535F] py-2">About Faces</Link>
+          <Link to="/eventCards" className="text-white text-lg hover:bg-[#0E535F] py-2">Event Cards</Link>
+          {authState.isAuthenticated ? (
+            <>
+              <Link to="/profile" className="text-white text-lg hover:bg-[#0E535F] py-2">Profile</Link>
+              <button onClick={logout} className="text-white text-lg hover:bg-[#0E535F] py-2">Logout</button>
+            </>
+          ) : (
+            <Link to="/login" className="text-white text-lg hover:bg-[#0E535F] py-2">Login</Link>
+          )}
         </div>
       </div>
 
       {/* Dropdown Menu (Visible on Mobile) */}
       <div className='bg-[#032A33] w-full'>
         <div className={`mt-2 ${isOpen ? 'block' : 'hidden'} md:hidden text-center m-4`}>
-          <Link to="/" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">
-            Home
-          </Link>
-          <Link to="/aboutFaces" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">
-            About Faces
-          </Link>
-          <Link to="/eventCards" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">
-            Event Cards
-          </Link>
-          <Link to="/individualCard" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">
-            Individual Card
-          </Link>
-          <Link to="/profile" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">
-            Profile
-          </Link>
-          <Link to="/login" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">
-            Login
-          </Link>
+          <Link to="/" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">Home</Link>
+          <Link to="/aboutFaces" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">About Faces</Link>
+          <Link to="/eventCards" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">Event Cards</Link>
+          {authState.isAuthenticated ? (
+            <>
+              <Link to="/profile" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">Profile</Link>
+              <button onClick={logout} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">Logout</button>
+            </>
+          ) : (
+            <Link to="/login" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">Login</Link>
+          )}
         </div>
       </div>
     </nav>
