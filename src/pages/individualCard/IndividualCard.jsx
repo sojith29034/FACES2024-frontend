@@ -1,17 +1,36 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getEventDetails } from '../../api';
+import { useParams } from 'react-router-dom';
 import './IndividualCard.css';
 import Sponsors from '../../components/Sponsors';
 
 const IndividualCard = () => {
   const [rollNumbers, setRollNumbers] = useState([]);
   const [newRollNumber, setNewRollNumber] = useState('');
-  const [seats, setSeats] = useState(20);
+  const { eventCode } = useParams();
+  const [eventData, setEventData] = useState(null);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const eventData = await getEventDetails(eventCode);
+        setEventData(eventData.data.event); // Set the correct event data
+        console.log(eventData.data.event); // Log to inspect the structure
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
+  
+    fetchEvents();
+  }, [eventCode]);
+
+  if (!eventData) return <div>Loading...</div>;
 
   const handleAddRollNumber = () => {
     if (/^\d{7}$/.test(newRollNumber)) {
       if (rollNumbers.includes(newRollNumber)) {
         alert('This roll number has already been added.');
-      } else if (rollNumbers.length < seats) {
+      } else if (rollNumbers.length < eventData.max_seats) { // Use max_seats from event data
         setRollNumbers([...rollNumbers, newRollNumber]);
         setNewRollNumber('');
       } else {
@@ -24,43 +43,50 @@ const IndividualCard = () => {
 
   return (
     <>
-    <div className="event-card">
-      <div className="left-section">
-        <div className="event-image">
-          <img src="src/assets/football.jpg" alt="Football Event" />
-        </div>
-        <div className="seats-info"><b>Seats: {seats - rollNumbers.length}/{seats}</b></div>
-        <div className="roll-number-input">
-          <input
-            type="text"
-            placeholder="Roll no"
-            value={newRollNumber}
-            onChange={(e) => setNewRollNumber(e.target.value)}
-          />
-          <button onClick={handleAddRollNumber}>Add</button>
-        </div>
-        <div className="roll-number-list-container">
-          <div className="roll-number-list">
-            {rollNumbers.map((roll, index) => (
-              <div key={index} className="roll-number">{roll}</div>
-            ))}
+      <div className="event-card">
+        <div className="left-section">
+          <div className="event-image">
+            <img src={eventData.image || "src/assets/football.jpg"} alt={eventData.title || "Event"} />
           </div>
+          <div className="seats-info">
+            <b>Seats: {eventData.max_seats - rollNumbers.length}/{eventData.max_seats}</b>
+          </div>
+          <div className="roll-number-input">
+            <input
+              type="text"
+              placeholder="Roll no"
+              value={newRollNumber}
+              onChange={(e) => setNewRollNumber(e.target.value)}
+            />
+            <button onClick={handleAddRollNumber}>Add</button>
+          </div>
+          <div className="roll-number-list-container">
+            <div className="roll-number-list">
+              {rollNumbers.map((roll, index) => (
+                <div key={index} className="roll-number">{roll}</div>
+              ))}
+            </div>
+          </div>
+          <button className="join-button">Join</button>
         </div>
-        <button className="join-button">Join</button>
+        <div className="right-section">
+          <div className="title">
+            <span className="big-bold-text">{eventData.title}</span>
+          </div>
+          <div className="event-details">
+            <p>
+              Day: {eventData.day}<br />
+              Time: {eventData.start} - {eventData.end}<br />
+              Venue: {/* Add venue if available */}<br />
+              Price: {eventData.entry_fee}/-
+            </p>
+          </div>
+          <p className="event-description">
+            {eventData.description}
+          </p>
+        </div>
       </div>
-      <div className="right-section">
-        <div className="title">
-          <span className="big-bold-text">FOOTBALL (MENS)</span>
-        </div>
-        <div className="event-details">
-          <p>Day<br />Time<br />Venue<br />Price</p>
-        </div>
-        <p className="event-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultricies libero ex, non porttitor est auctor vitae. Proin vestibulum malesuada urna ut euismod. Donec eget ullamcorper sapien, id posuere neque. Ut leo augue, semper sit amet gravida ac, hendrerit facilisis mauris. Sed tincidunt sed lectus sed rutrum.
-        </p>
-      </div>
-    </div>
-    <Sponsors />
+      <Sponsors />
     </>
   );
 };
