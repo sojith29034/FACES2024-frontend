@@ -105,7 +105,7 @@ const Profile = ({ eventToCheckOut, setEventsToCheckout }) => {
               <span className="block text-xl font-semibold">{event.title}</span>
               <span className="block text-gray-600">{`${event.start} - ${event.end}`}</span>
               <span className="block italic text-gray-500">{`Day: ${event.day}`}</span>
-              <span className="block italic text-gray-500">{`Team: ${event.teamName}`}</span>
+              <span className="block italic text-gray-500">{`${event.teamName}`}</span>
               <span className="block italic text-gray-500">{`Entry Fee: ${event.entry_fee}`}</span>
               <div className="block italic text-gray-500">
               <span className="block italic text-gray-500">
@@ -134,7 +134,7 @@ const Profile = ({ eventToCheckOut, setEventsToCheckout }) => {
             <div key={index} className="p-4 border border-gray-300 rounded-lg mb-4">
               <span className="block text-xl font-semibold">{event.title}</span>
               <span className="block text-gray-600">{`${event.start} - ${event.end}`}</span>
-              <span className="block italic text-gray-500">{`Team: ${event.teamName}`}</span>
+              <span className="block italic text-gray-500">{`${event.teamName}`}</span>
               <span className="block text-yellow-500">Pending Verification</span>
             </div>
           ))

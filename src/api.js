@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:8000/api';
+const API_URL = 'http://13.234.118.246/api';
 
 // User Authentication and Profile Management
 export const login = async (credentials) => {
