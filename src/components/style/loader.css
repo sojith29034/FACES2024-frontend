@@ -1,0 +1,34 @@
+/* src/components/style/loader.css */
+.loader-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0D9189;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    animation: shrinkBackground 1s ease-in-out forwards;
+  }
+  
+  @keyframes shrinkBackground {
+    0% {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+    100% {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+  }
+  
+  .loader-gif {
+    width: 100px;
+    height: 100px;
+  }
+  

@@ -1,36 +1,30 @@
-// src/App.jsx
-import './App.css';
-import { useState, useEffect } from 'react';
-import { getEvents, getFeaturedEvents } from './api.js';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Login from './pages/login/Login.jsx';
+import Loader from './components/Loader'; // Import the Loader component
 import LandingPage from './pages/landingPage/LandingPage';
 import AboutFaces from './pages/aboutFaces/AboutFaces';
 import EventCards from './pages/eventCards/EventCards';
 import IndividualCard from './pages/individualCard/IndividualCard';
 import Profile from './pages/profile/Profile';
-import { AuthProvider } from './AuthContext'; // Import AuthProvider
-import { EventProvider } from './contexts/EventContext'; // Import EventProvider
-import ProtectedRoute from './components/ProtectedRoute';
+import Login from './pages/login/Login';
 
 function App() {
-  const [events, setEvents] = useState([]);
-  const [featuredEvents, setFeaturedEvents] = useState([]);
-  const [eventsToCheckout, setEventsToCheckout] = useState([]); // Centralized state
+  const [loading, setLoading] = useState(false); // Initially, not loading
+
+  const location = useLocation();
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      const eventData = await getEvents();
-      const featuredEventData = await getFeaturedEvents();
-      
-      setEvents(eventData);
-      setFeaturedEvents(featuredEventData);
-    };
+    // Show loader on route change
+    setLoading(true);
 
-    fetchEvents();
-  }, []);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000); // Adjust the delay as needed
+
+    return () => clearTimeout(timer); // Cleanup the timer on component unmount
+  }, [location]); // Runs every time the location (route) changes
 
   const Mainframe = ({ element }) => (
     <>
@@ -41,27 +35,27 @@ function App() {
   );
 
   return (
-    <AuthProvider>
-      <EventProvider>
-        <Router>
-          <Routes>
-            <Route path='/' element={<Mainframe element={<LandingPage />} />} />
-            <Route path='/aboutFaces' element={<Mainframe element={<AboutFaces />} />} />
-            <Route path='/eventCards' element={<Mainframe element={<EventCards />} />} />
-            <Route
-            path="/profile"
-            element={<Mainframe element={<Profile eventToCheckOut={eventsToCheckout} setEventsToCheckout={setEventsToCheckout}/>} />}
-          />
-          <Route
-            path="/individualCard/:eventCode"
-            element={<Mainframe element={<IndividualCard setEventsToCheckout={setEventsToCheckout} eventToCheckOut={eventsToCheckout}/>} />}
-          />
-            <Route path='/login' element={<Mainframe element={<Login />} />} />
-          </Routes>
-        </Router>
-      </EventProvider>
-    </AuthProvider>
+    <>
+      {loading ? (
+        <Loader /> // Show the loader while loading
+      ) : (
+        <Routes>
+          <Route path='/' element={<Mainframe element={<LandingPage />} />} />
+          <Route path='/aboutFaces' element={<Mainframe element={<AboutFaces />} />} />
+          <Route path='/eventCards' element={<Mainframe element={<EventCards />} />} />
+          <Route path='/individualCard' element={<Mainframe element={<IndividualCard />} />} />
+          <Route path='/profile' element={<Mainframe element={<Profile />} />} />
+          <Route path='/login' element={<Mainframe element={<Login />} />} />
+        </Routes>
+      )}
+    </>
   );
 }
 
-export default App;
+export default function WrappedApp() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}
