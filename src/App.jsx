@@ -9,7 +9,7 @@ import EventCards from './pages/eventCards/EventCards';
 import IndividualCard from './pages/individualCard/IndividualCard';
 import Profile from './pages/profile/Profile';
 import Login from './pages/login/Login';
-import { AuthProvider } from './AuthContext'; 
+import { AuthProvider } from './AuthContext';
 
 function App() {
   const [loading, setLoading] = useState(false); 
@@ -29,9 +29,11 @@ function App() {
 
   const Mainframe = ({ element }) => (
     <>
+      <AuthProvider>
       <Navbar />
       {element}
       <Footer />
+      </AuthProvider>
     </>
   );
 
