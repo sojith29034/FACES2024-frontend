@@ -65,7 +65,7 @@ const Navbar = () => {
           {authState.isAuthenticated ? (
             <>
               <Link to="/profile" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">Profile</Link>
-              <button onClick={logout} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">Logout</button>
+              <button onClick={logout} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2" style={{color:white}}>Logout</button>
             </>
           ) : (
             <Link to="/login" onClick={toggleMenu} className="block text-white px-2 py-2 text-lg hover:bg-[#0E535F] border-b-2">Login</Link>

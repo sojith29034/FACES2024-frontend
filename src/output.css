@@ -245,6 +245,7 @@ input:where([type='submit']) {
   /* 2 */
   background-image: none;
   /* 2 */
+  color: white;
 }
 
 /*
